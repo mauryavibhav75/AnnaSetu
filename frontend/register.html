@@ -44,8 +44,10 @@
     </section>
   </main>
   <script>
-const API_BASE = `${window.location.protocol}//${window.location.hostname}:5000`;
-
+const API_BASE = window.location.port === '5500'
+  ? `${window.location.protocol}//${window.location.hostname}:5000`
+  : window.location.origin;
+  
     const params = new URLSearchParams(location.search);
     const allowedNext = new Set(['donate.html', 'find-seva.html', 'index.html']);
     let next = params.get('next') || 'index.html';

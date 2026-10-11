@@ -1133,7 +1133,9 @@
 <body>
 
 <script>
-const API_BASE = `${window.location.protocol}//${window.location.hostname}:5000`;
+const API_BASE = window.location.port === '5500'
+  ? `${window.location.protocol}//${window.location.hostname}:5000`
+  : window.location.origin;
 
 /* Protected page: return to login if the 10-day server session has expired. */
 (async function protectServePage() {
