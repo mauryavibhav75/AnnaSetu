@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share surplus food and useful items with people who need them through AnnaSetu.">
+    <title>Start Donating | AnnaSetu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+        :root {
+            --green: #16804f;
+            --green-dark: #0d5b38;
+            --green-light: #e8f7ef;
+            --cream: #fffaf2;
+            --dark: #15231c;
+            --muted: #65716a;
+            --border: #e5ebe7;
+            --shadow: 0 20px 60px rgba(13, 91, 56, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--dark);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px max(4%, calc((100% - 1100px) / 2));
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green-dark);
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .logo i {
+            color: var(--green);
+        }
+
+        .header-link {
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .page-container {
+            width: min(900px, 92%);
+            margin: 50px auto 70px;
+        }
+
+        .page-heading {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .page-heading h1 {
+            margin: 10px 0;
+            font: 700 clamp(34px, 5vw, 48px) / 1.15 "Playfair Display", serif;
+        }
+
+        .page-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .donation-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            padding: 30px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .field {
+            min-width: 0;
+        }
+
+        .field-full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            color: var(--dark);
+            background: #fff;
+            border: 1px solid #dce5df;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(22, 128, 79, 0.1);
+        }
+
+        textarea {
+            min-height: 105px;
+            resize: vertical;
+        }
+
+        .help-text {
+            display: block;
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .notice {
+            display: none;
+            grid-column: 1 / -1;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .notice.show {
+            display: block;
+        }
+
+        .notice.success {
+            color: #12653d;
+            background: #e9f8ef;
+        }
+
+        .notice.error {
+            color: #a32620;
+            background: #fff0ef;
+        }
+
+        .submit-button {
+            grid-column: 1 / -1;
+            padding: 15px;
+            color: #fff;
+            background: var(--green);
+            border: 0;
+            border-radius: 11px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .submit-button:hover {
+            background: var(--green-dark);
+            transform: translateY(-1px);
+        }
+
+        .submit-button:disabled {
+            cursor: wait;
+            opacity: 0.65;
+            transform: none;
+        }
+
+        .page-note {
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 650px) {
+            .site-header {
+                padding: 16px 4%;
+            }
+
+            .page-container {
+                margin-top: 32px;
+            }
+
+            .donation-form {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .field-full,
+            .notice,
+            .submit-button {
+                grid-column: 1;
+            }
+        }
+    
+/* Account history drawer shared by Donate and Find Seva pages. */
+.history-launcher{position:fixed;right:22px;bottom:22px;z-index:9000;border:0;border-radius:999px;background:#16804f;color:#fff;padding:14px 19px;font:800 14px "DM Sans",sans-serif;box-shadow:0 12px 35px #0d5b3830;cursor:pointer;display:flex;align-items:center;gap:9px}
+.history-launcher:hover{background:#0d5b38;transform:translateY(-1px)}
+.history-overlay{position:fixed;inset:0;z-index:10000;background:#0b2118a6;display:none;align-items:center;justify-content:center;padding:18px}
+.history-overlay.open{display:flex}.history-panel{width:min(780px,100%);max-height:min(85vh,850px);overflow:auto;background:#fffaf2;border-radius:22px;padding:25px;box-shadow:0 25px 80px #0003;color:#15231c}
+.history-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.history-head h2{margin:0;font-size:25px}.history-head p{margin:5px 0 18px;color:#65716a;font-size:14px}.history-close{border:0;background:#e8f7ef;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer;color:#0d5b38;flex-shrink:0}
+.history-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:20px}.history-stat{background:#fff;border:1px solid #e5ebe7;border-radius:14px;padding:14px}.history-stat strong{display:block;color:#16804f;font-size:24px}.history-stat span{font-size:12px;color:#65716a}.history-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.history-tab{border:1px solid #dce5df;background:#fff;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;color:#435047}.history-tab.active{background:#16804f;border-color:#16804f;color:#fff}.history-list{display:grid;gap:10px}.history-item{background:#fff;border:1px solid #e5ebe7;border-radius:14px;padding:14px}.history-item-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.history-item h3{font-size:15px;margin:0 0 4px}.history-item p{font-size:13px;color:#65716a;margin:3px 0}.history-badge{font-size:11px;font-weight:800;letter-spacing:.3px;padding:5px 8px;border-radius:999px;background:#e8f7ef;color:#0d5b38;white-space:nowrap}.history-empty,.history-error{padding:24px;text-align:center;background:#fff;border:1px dashed #cddbd2;border-radius:14px;color:#65716a;font-size:14px}.history-error{color:#a32620;background:#fff0ef;border-color:#f1c6c2}.history-loading{text-align:center;padding:20px;color:#65716a}
+@media(max-width:520px){.history-launcher{right:12px;bottom:12px;padding:12px 15px}.history-panel{padding:17px}.history-stats{grid-template-columns:1fr}.history-item-top{display:block}.history-badge{display:inline-block;margin-top:8px}}
+
+</style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="logo" href="index.html" aria-label="AnnaSetu home">
+            <i class="bi bi-heart-fill" aria-hidden="true"></i>
+            <span>AnnaSetu</span>
+        </a>
+        <a class="header-link" href="find-seva.html">
+            Find Seva <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+    </header>
+
+    <main class="page-container">
+        <section class="page-heading" aria-labelledby="pageTitle">
+            <div class="eyebrow">Give with heart</div>
+            <h1 id="pageTitle">Post a Donation</h1>
+            <p>Share surplus food or useful items with people who need them.</p>
+        </section>
+
+        <form class="donation-form" id="donationForm">
+            <input type="hidden" id="latitude" name="latitude" value="">
+            <input type="hidden" id="longitude" name="longitude" value="">
+            <div class="field">
+                <label for="title">Donation title *</label>
+                <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    required
+                    maxlength="120"
+                    placeholder="e.g. Fresh meals available"
+                >
+            </div>
+
+            <div class="field">
+                <label for="category">Category *</label>
+                <select id="category" name="category" required>
+                    <option value="">Choose category</option>
+                    <option value="Food">Food</option>
+                    <option value="Ration">Ration</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Essentials">Essentials</option>
+                    <option value="Books">Books</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="quantity">Quantity *</label>
+                <input
+                    id="quantity"
+                    name="quantity"
+                    type="text"
+                    required
+                    maxlength="100"
+                    placeholder="e.g. 30 meal packets"
+                >
+            </div>
+
+            <div class="field">
+                <label for="state">State *</label>
+                <select id="state" name="state" required>
+                    <option value="Maharashtra" selected>Maharashtra</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="city">City *</label>
+                <select id="city" name="city" required autocomplete="address-level2">
+                    <option value="">Select city</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="area">Area / Locality *</label>
+                <select id="area" name="area" required disabled>
+                    <option value="">Select city first</option>
+                </select>
+            </div>
+
+            <div class="field field-full">
+                <label>Current location (optional but recommended)</label>
+                <button type="button" class="submit-button" id="useCurrentLocation" style="margin-top:0;background:#176b45">
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Use My Current Location
+                </button>
+                <small class="help-text" id="locationMessage">Choose an area or allow GPS to share a more accurate pickup location.</small>
+            </div>
+
+            <div class="field field-full">
+                <label for="donationPhoto">Donation photo (optional)</label>
+                <input id="donationPhoto" name="donationPhoto" type="file" accept="image/jpeg,image/png,image/webp,image/*" capture="environment" aria-describedby="photoHelp">
+                <small class="help-text" id="photoHelp">Add one photo of the food, clothes, books, or other items (JPG, PNG, or WebP; maximum 500 KB). You can skip this.</small>
+                <div id="photoPreviewWrap" style="display:none;margin-top:12px">
+                    <img id="photoPreview" alt="Donation photo preview" style="display:block;max-width:100%;max-height:260px;border-radius:12px;border:1px solid #dce5df;object-fit:contain">
+                    <button type="button" id="removeDonationPhoto" style="margin-top:8px;border:1px solid #dce5df;background:#fff;border-radius:8px;padding:8px 12px;cursor:pointer">Remove photo</button>
+                </div>
+            </div>
+
+            <div class="field field-full">
+                <label for="description">Description *</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    required
+                    maxlength="2000"
+                    placeholder="Describe the items, condition, quantity, pickup instructions, and best-before time if food."
+                ></textarea>
+            </div>
+
+            <div class="field field-full">
+                <label for="address">Pickup address *</label>
+                <textarea
+                    id="address"
+                    name="address"
+                    required
+                    maxlength="500"
+                    autocomplete="street-address"
+                    placeholder="Enter the full pickup address"
+                ></textarea>
+            </div>
+
+            <div class="field">
+                <label for="pickupUntil">Available until (optional)</label>
+                <input id="pickupUntil" name="pickupUntil" type="datetime-local">
+            </div>
+
+            <div class="field">
+                <label for="contact">Contact mobile (optional)</label>
+                <input
+                    id="contact"
+                    name="contact"
+                    type="tel"
+                    inputmode="numeric"
+                    pattern="[0-9]{10}"
+                    minlength="10"
+                    maxlength="10"
+                    placeholder="10-digit mobile number"
+                >
+                <small class="help-text">Use 10 digits without +91 or spaces.</small>
+            </div>
+
+            <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+            <button class="submit-button" type="submit" id="submitBtn">
+                <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                Publish Donation
+            </button>
+        </form>
+
+        <p class="page-note">
+            Please post only items that are safe, usable, and accurately described.
+        </p>
+    </main>
+
+    <script>
+const API_BASE = `${window.location.protocol}//${window.location.hostname}:5000`;
+
+        const form = document.getElementById("donationForm");
+        const notice = document.getElementById("notice");
+        const submitButton = document.getElementById("submitBtn");
+        const cityInput = document.getElementById("city");
+        const photoInput = document.getElementById("donationPhoto");
+        const photoPreview = document.getElementById("photoPreview");
+        const photoPreviewWrap = document.getElementById("photoPreviewWrap");
+        let donationPhotoData = "";
+
+        photoInput.addEventListener("change", () => {
+            const file = photoInput.files && photoInput.files[0];
+            donationPhotoData = "";
+            if (!file) {
+                photoPreview.removeAttribute("src");
+                photoPreviewWrap.style.display = "none";
+                return;
+            }
+            if (!file.type.startsWith("image/")) {
+                photoInput.value = "";
+                showNotice("Please choose an image file.", "error");
+                return;
+            }
+            if (file.size > 500 * 1024) {
+                photoInput.value = "";
+                showNotice("Photo must be 500 KB or smaller. Please choose a smaller image.", "error");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = () => {
+                donationPhotoData = String(reader.result || "");
+                photoPreview.src = donationPhotoData;
+                photoPreviewWrap.style.display = "block";
+            };
+            reader.onerror = () => showNotice("Could not read this photo. Please try another image.", "error");
+            reader.readAsDataURL(file);
+        });
+
+        document.getElementById("removeDonationPhoto").addEventListener("click", () => {
+            photoInput.value = "";
+            donationPhotoData = "";
+            photoPreview.removeAttribute("src");
+            photoPreviewWrap.style.display = "none";
+        });
+
+        function showNotice(message, type) {
+            notice.textContent = message;
+            notice.className = `notice show ${type}`;
+        }
+
+        async function checkLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/api/auth/me`, {
+                    credentials: "include"
+                });
+
+                if (!response.ok) {
+                    window.location.replace("login.html?next=donate.html");
+                    return false;
+                }
+
+                const data = await response.json();
+
+                if (!data.user) {
+                    window.location.replace("login.html?next=donate.html");
+                    return false;
+                }
+
+                return true;
+            } catch (error) {
+                console.error("Unable to verify login session:", error);
+                showNotice(
+                    "Unable to verify your login. Please start the AnnaSetu server and refresh this page.",
+                    "error"
+                );
+                submitButton.disabled = true;
+                return false;
+            }
+        }
+
+
+        // These are the same Maharashtra city/area options used by Find Seva.
+        const cityAreas = {
+        "Pune": [
+            "Akurdi", "Ambegaon", "Anand Nagar", "Aundh", "Balewadi", "Baner", "Bavdhan", "Bhandarkar Road", "Bhawani Peth", "Bhekrai Nagar", "Bhosari", "Bibwewadi", "Bopodi", "Budhwar Peth", "Bund Garden", "Camp", "Chandan Nagar", "Charholi", "Chikhali", "Chinchwad", "Dapodi", "Deccan Gymkhana", "Dhanori", "Dhayari", "Erandwane", "Fatima Nagar", "Fursungi", "Ganesh Peth", "Ghorpadi", "Gokhalenagar", "Hadapsar", "Handewadi", "Hinjawadi", "Ideal Colony", "Jambhulwadi", "Kalas", "Kalyani Nagar", "Karve Nagar", "Kasba Peth", "Katraj", "Keshav Nagar", "Khadki", "Kharadi", "Kondhwa", "Koregaon Park", "Kothrud", "Lohegaon", "Lulla Nagar", "Magarpatta", "Mahalunge", "Mamurdi", "Market Yard", "Moshi", "Mundhwa", "Nanded City", "Narhe", "Navi Peth", "NIBM Road", "Nigdi", "Pashan", "Pimple Gurav", "Pimple Nilakh", "Pimple Saudagar", "Pirangut", "Prabhat Road", "Punawale", "Rahatani", "Rasta Peth", "Ravet", "Sadashiv Peth", "Salisbury Park", "Sangamwadi", "Sasane Nagar", "Senapati Bapat Road", "Shaniwar Peth", "Shivajinagar", "Sus", "Swargate", "Tathawade", "Thergaon", "Tilak Road", "Undri", "Vadgaon Budruk", "Viman Nagar", "Vishrantwadi", "Wadgaon Sheri", "Wakad", "Wanowrie", "Warje", "Yerawada"
+        ],
+        "Mumbai": ["Aarey", "Andheri East", "Andheri West", "Bandra East", "Bandra West", "Bhandup", "Borivali East", "Borivali West", "Byculla", "Chembur", "Churchgate", "Colaba", "Dadar East", "Dadar West", "Dahisar", "Fort", "Ghatkopar", "Goregaon East", "Goregaon West", "Jogeshwari", "Juhu", "Kandivali East", "Kandivali West", "Kanjurmarg", "Kurla", "Lower Parel", "Malad East", "Malad West", "Matunga", "Mulund", "Powai", "Santacruz East", "Santacruz West", "Sion", "Vikhroli", "Vile Parle East", "Vile Parle West", "Worli"],
+        "Thane": ["Balkum", "Brahmand", "Ghodbunder Road", "Hiranandani Estate", "Kalwa", "Kasarvadavali", "Kavesar", "Kolshet", "Kopri", "Majiwada", "Manpada", "Naupada", "Panch Pakhadi", "Patlipada", "Wagle Estate"],
+        "Navi Mumbai": ["Airoli", "Belapur", "CBD Belapur", "Digha", "Ghansoli", "Juinagar", "Kharghar", "Koparkhairane", "Nerul", "Sanpada", "Seawoods", "Taloja", "Turbhe", "Vashi"],
+        "Nagpur": ["Ajni", "Besa", "Civil Lines", "Dharampeth", "Dhantoli", "Hingna", "Itwari", "Manish Nagar", "Mankapur", "Medical Square", "Nandanvan", "Pratap Nagar", "Sadar", "Sitabuldi", "Wardhaman Nagar"],
+        "Nashik": ["Adgaon", "Cidco", "College Road", "Gangapur Road", "Indira Nagar", "Makhmalabad", "Nashik Road", "Panchavati", "Pathardi Phata", "Satpur", "Sharanpur Road", "Tidke Colony"],
+        "Chhatrapati Sambhajinagar": ["CIDCO", "Garkheda", "Jalna Road", "Osmanpura", "Samarth Nagar", "Satara Parisar", "Shahnoorwadi", "Waluj"],
+        "Kolhapur": ["Kadamwadi", "Kasba Bawada", "Rajarampuri", "Shahupuri", "Tarabai Park", "Uchgaon"],
+        "Solapur": ["Akkalkot Road", "Hotgi Road", "Jule Solapur", "Majrewadi", "Saat Rasta", "Vijapur Road"],
+        "Amravati": ["Badnera", "Camp", "Gadge Nagar", "Rajapeth", "Shegaon Naka"],
+        "Nanded": ["CIDCO", "Itwara", "Shivaji Nagar", "Vazirabad"],
+        "Sangli-Miraj-Kupwad": ["Kupwad", "Miraj", "Sangliwadi", "Vishrambag"],
+        "Malegaon": ["Camp", "Soygaon", "Sangameshwar"],
+        "Jalgaon": ["Mehrun", "Navi Peth", "Ring Road", "Shivaji Nagar"],
+        "Dhule": ["Agra Road", "Deopur", "Nakane Road"],
+        "Akola": ["Civil Lines", "Jatharpeth", "Mothi Umari", "Tapadia Nagar"],
+        "Latur": ["Ausa Road", "Barshi Road", "Ganj Golai", "MIDC"],
+        "Ahmednagar": ["Kedgaon", "Maliwada", "Savedi", "Station Road"],
+        "Chandrapur": ["Bapat Nagar", "Civil Lines", "Durgapur", "Jatpura Gate"],
+        "Parbhani": ["Basmat Road", "Karegaon Road", "Vasmat Road"],
+        "Jalna": ["Ambad Road", "Deulgaon Raja Road", "Old Jalna"],
+        "Panvel": ["Kamothe", "Karanjade", "New Panvel", "Old Panvel", "Roadpali"],
+        "Mira-Bhayandar": ["Bhayandar East", "Bhayandar West", "Kashimira", "Mira Road East", "Mira Road West"],
+        "Vasai-Virar": ["Nalasopara East", "Nalasopara West", "Naigaon", "Vasai East", "Vasai West", "Virar East", "Virar West"],
+        "Kalyan-Dombivli": ["Dombivli East", "Dombivli West", "Kalyan East", "Kalyan West", "Manpada", "Thakurli"],
+        "Ulhasnagar": ["Camp 1", "Camp 2", "Camp 3", "Camp 4", "Camp 5"],
+        "Bhiwandi-Nizampur": ["Anjurphata", "Kamatghar", "Narpoli", "Temghar"],
+        "Ichalkaranji": ["Ichalkaranji city centre", "Kabnur", "Shahapur"],
+        "Other Maharashtra City": ["City centre", "Other area"]
+    };
+
+        const cityCoordinates = {
+        "Pune": [18.5204, 73.8567], "Mumbai": [19.0760, 72.8777], "Thane": [19.2183, 72.9781],
+        "Navi Mumbai": [19.0330, 73.0297], "Nagpur": [21.1458, 79.0882], "Nashik": [19.9975, 73.7898],
+        "Chhatrapati Sambhajinagar": [19.8762, 75.3433], "Kolhapur": [16.7050, 74.2433], "Solapur": [17.6599, 75.9064],
+        "Amravati": [20.9374, 77.7796], "Nanded": [19.1383, 77.3210], "Sangli-Miraj-Kupwad": [16.8524, 74.5815],
+        "Malegaon": [20.5579, 74.5089], "Jalgaon": [21.0077, 75.5626], "Dhule": [20.9042, 74.7749],
+        "Akola": [20.7002, 77.0082], "Latur": [18.4088, 76.5604], "Ahmednagar": [19.0948, 74.7480],
+        "Chandrapur": [19.9615, 79.2961], "Parbhani": [19.2608, 76.7748], "Jalna": [19.8410, 75.8864],
+        "Panvel": [18.9894, 73.1175], "Mira-Bhayandar": [19.2952, 72.8544], "Vasai-Virar": [19.3919, 72.8397],
+        "Kalyan-Dombivli": [19.2403, 73.1305], "Ulhasnagar": [19.2215, 73.1645], "Bhiwandi-Nizampur": [19.2813, 73.0483],
+        "Ichalkaranji": [16.6912, 74.4605], "Other Maharashtra City": [19.7515, 75.7139]
+    };
+
+        const areaOffsets = {
+        "Akurdi": [18.6500, 73.7740], "Ambegaon": [18.4510, 73.8560], "Anand Nagar": [18.4760, 73.8070],
+        "Aundh": [18.5595, 73.8075], "Balewadi": [18.5760, 73.7790], "Baner": [18.5590, 73.7868],
+        "Bavdhan": [18.5089, 73.7780], "Bhandarkar Road": [18.5190, 73.8390], "Bhawani Peth": [18.5100, 73.8710],
+        "Bhekrai Nagar": [18.4770, 73.9400], "Bhosari": [18.6240, 73.8470], "Bibwewadi": [18.4670, 73.8660],
+        "Bopodi": [18.5700, 73.8310], "Budhwar Peth": [18.5160, 73.8590], "Bund Garden": [18.5360, 73.8830],
+        "Camp": [18.5130, 73.8790], "Chandan Nagar": [18.5550, 73.9260], "Charholi": [18.6500, 73.8900],
+        "Chikhali": [18.6780, 73.8000], "Chinchwad": [18.6298, 73.7997], "Dapodi": [18.5810, 73.8320],
+        "Deccan Gymkhana": [18.5160, 73.8410], "Dhanori": [18.5860, 73.8980], "Dhayari": [18.4450, 73.8100],
+        "Erandwane": [18.5080, 73.8330], "Fatima Nagar": [18.4960, 73.8910], "Fursungi": [18.4880, 73.9630],
+        "Ganesh Peth": [18.5080, 73.8660], "Ghorpadi": [18.5050, 73.9000], "Gokhalenagar": [18.5340, 73.8270],
+        "Hadapsar": [18.5089, 73.9260], "Handewadi": [18.4630, 73.9440], "Hinjawadi": [18.5913, 73.7389],
+        "Ideal Colony": [18.5070, 73.8200], "Jambhulwadi": [18.4390, 73.8410], "Kalas": [18.5800, 73.8570],
+        "Kalyani Nagar": [18.5480, 73.9030], "Karve Nagar": [18.4840, 73.8210], "Kasba Peth": [18.5200, 73.8580],
+        "Katraj": [18.4520, 73.8670], "Keshav Nagar": [18.5330, 73.9380], "Khadki": [18.5630, 73.8500],
+        "Kharadi": [18.5515, 73.9430], "Kondhwa": [18.4770, 73.8900], "Koregaon Park": [18.5360, 73.8930],
+        "Kothrud": [18.5074, 73.8077], "Lohegaon": [18.5990, 73.9160], "Lulla Nagar": [18.4800, 73.8900],
+        "Magarpatta": [18.5160, 73.9270], "Mahalunge": [18.5670, 73.7530], "Mamurdi": [18.6660, 73.7210],
+        "Market Yard": [18.4870, 73.8710], "Moshi": [18.6750, 73.8430], "Mundhwa": [18.5290, 73.9310],
+        "Nanded City": [18.4630, 73.7830], "Narhe": [18.4480, 73.8230], "Navi Peth": [18.5140, 73.8460],
+        "NIBM Road": [18.4660, 73.8950], "Nigdi": [18.6510, 73.7700], "Pashan": [18.5370, 73.7900],
+        "Pimple Gurav": [18.5790, 73.8190], "Pimple Nilakh": [18.5793, 73.7890], "Pimple Saudagar": [18.5993, 73.7980],
+        "Pirangut": [18.5070, 73.6820], "Prabhat Road": [18.5170, 73.8330], "Punawale": [18.6270, 73.7490],
+        "Rahatani": [18.6090, 73.7870], "Rasta Peth": [18.5160, 73.8660], "Ravet": [18.6530, 73.7360],
+        "Sadashiv Peth": [18.5100, 73.8500], "Salisbury Park": [18.4950, 73.8760], "Sangamwadi": [18.5360, 73.8760],
+        "Sasane Nagar": [18.4860, 73.9340], "Senapati Bapat Road": [18.5330, 73.8290], "Shaniwar Peth": [18.5190, 73.8550],
+        "Shivajinagar": [18.5308, 73.8475], "Sus": [18.5590, 73.7480], "Swargate": [18.5010, 73.8630],
+        "Tathawade": [18.6180, 73.7460], "Thergaon": [18.6090, 73.7700], "Tilak Road": [18.5060, 73.8580],
+        "Undri": [18.4510, 73.9060], "Vadgaon Budruk": [18.4630, 73.8250], "Viman Nagar": [18.5679, 73.9143],
+        "Vishrantwadi": [18.5780, 73.8790], "Wadgaon Sheri": [18.5480, 73.9250], "Wakad": [18.5975, 73.7898],
+        "Wanowrie": [18.4850, 73.8990], "Warje": [18.4820, 73.7990], "Yerawada": [18.5520, 73.8790],
+        "Andheri East": [19.1197, 72.8690], "Andheri West": [19.1290, 72.8290], "Bandra East": [19.0620, 72.8500],
+        "Bandra West": [19.0596, 72.8295], "Powai": [19.1176, 72.9060], "Vashi": [19.0771, 72.9986],
+        "Kharghar": [19.0473, 73.0699], "Airoli": [19.1570, 72.9980], "CBD Belapur": [19.0170, 73.0390]
+    };
+
+        const areaSelect = document.getElementById("area");
+        const locationMessage = document.getElementById("locationMessage");
+        let gpsLocationSelected = false;
+
+        function populateDonationCities() {
+            Object.keys(cityAreas).sort().forEach(city => {
+                cityInput.appendChild(new Option(city, city));
+            });
+            cityInput.value = "Pune";
+            populateDonationAreas();
+        }
+
+        function populateDonationAreas() {
+            const city = cityInput.value;
+            areaSelect.innerHTML = "";
+            if (!city || !cityAreas[city]) {
+                areaSelect.disabled = true;
+                areaSelect.appendChild(new Option("Select city first", ""));
+                return;
+            }
+            areaSelect.disabled = false;
+            areaSelect.appendChild(new Option("Select area", ""));
+            cityAreas[city].forEach(area => areaSelect.appendChild(new Option(area, area)));
+            areaSelect.appendChild(new Option("Other / city centre", "Other / city centre"));
+            gpsLocationSelected = false;
+            setApproximateLocation();
+        }
+
+        function setApproximateLocation() {
+            const city = cityInput.value;
+            const area = areaSelect.value;
+            const coords = area && areaOffsets[area] ? areaOffsets[area] : (cityCoordinates[city] || null);
+            if (coords && !gpsLocationSelected) {
+                document.getElementById("latitude").value = String(coords[0]);
+                document.getElementById("longitude").value = String(coords[1]);
+                locationMessage.textContent = "Approximate area location selected. Use My Current Location for accurate GPS coordinates.";
+            }
+        }
+
+        cityInput.addEventListener("change", populateDonationAreas);
+        areaSelect.addEventListener("change", setApproximateLocation);
+        populateDonationCities();
+
+        document.getElementById("useCurrentLocation").addEventListener("click", () => {
+            if (!navigator.geolocation) {
+                locationMessage.textContent = "This browser does not support GPS location.";
+                return;
+            }
+            locationMessage.textContent = "Getting your current location…";
+            navigator.geolocation.getCurrentPosition(position => {
+                gpsLocationSelected = true;
+                document.getElementById("latitude").value = String(position.coords.latitude);
+                document.getElementById("longitude").value = String(position.coords.longitude);
+                locationMessage.textContent = "Current GPS location captured successfully.";
+            }, error => {
+                console.warn("Geolocation error:", error);
+                locationMessage.textContent = "Location permission unavailable. Select your city and area to use an approximate location.";
+            }, { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
+        });
+
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            submitButton.disabled = true;
+            notice.className = "notice";
+
+            const donation = {
+                title: document.getElementById("title").value.trim(),
+                category: document.getElementById("category").value,
+                quantity: document.getElementById("quantity").value.trim(),
+                state: document.getElementById("state").value,
+                city: cityInput.value.trim(),
+                area: areaSelect.value.trim(),
+                latitude: document.getElementById("latitude")?.value || null,
+                longitude: document.getElementById("longitude")?.value || null,
+                description: document.getElementById("description").value.trim(),
+                address: document.getElementById("address").value.trim(),
+                pickupUntil: document.getElementById("pickupUntil").value || null,
+                contact: document.getElementById("contact").value.trim(),
+                photoData: donationPhotoData || null
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/api/donations`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify(donation)
+                });
+
+                const result = await response.json().catch(() => ({}));
+
+                if (response.status === 401 || response.status === 403) {
+                    window.location.replace("login.html?next=donate.html");
+                    return;
+                }
+
+                if (!response.ok) {
+                    throw new Error(result.message || "Could not publish the donation.");
+                }
+
+                showNotice(
+                    "Donation published successfully! Volunteers can now see it in Find Seva.",
+                    "success"
+                );
+
+                form.reset();
+                donationPhotoData = "";
+                photoPreview.removeAttribute("src");
+                photoPreviewWrap.style.display = "none";
+                document.getElementById("state").value = "Maharashtra";
+                cityInput.value = "Pune";
+                populateDonationAreas();
+                gpsLocationSelected = false;
+            } catch (error) {
+                showNotice(error.message || "Something went wrong. Please try again.", "error");
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+
+        checkLogin();
+    </script>
+
+<button type="button" class="history-launcher" id="openHistory" aria-haspopup="dialog"><i class="bi bi-clock-history"></i> History</button>
+<div class="history-overlay" id="historyOverlay" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+  <section class="history-panel">
+    <div class="history-head"><div><h2 id="historyTitle">Your AnnaSetu History</h2><p id="historyIntro">Your donations and seva activity in one place.</p></div><button type="button" class="history-close" id="closeHistory" aria-label="Close history">&times;</button></div>
+    <div class="history-stats" id="historyStats"><div class="history-stat"><strong>—</strong><span>Donations posted</span></div><div class="history-stat"><strong>—</strong><span>Seva accepted</span></div><div class="history-stat"><strong>—</strong><span>Seva completed</span></div></div>
+    <div class="history-tabs"><button type="button" class="history-tab active" data-history-tab="donated">My Donations</button><button type="button" class="history-tab" data-history-tab="served">My Seva</button></div>
+    <div id="historyContent" class="history-loading">Loading your history…</div>
+  </section>
+</div>
+<script>
+(function setupAccountHistory() {
+  const overlay = document.getElementById('historyOverlay');
+  const content = document.getElementById('historyContent');
+  const stats = document.getElementById('historyStats');
+  const tabs = Array.from(document.querySelectorAll('[data-history-tab]'));
+  let historyData = null;
+  let activeTab = 'donated';
+  const escapeHTML = value => String(value == null ? '' : value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const niceStatus = value => String(value || 'LIVE').replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+  const niceDate = value => value ? new Date(value).toLocaleDateString(undefined, {year:'numeric',month:'short',day:'numeric'}) : 'Date unavailable';
+  function renderStats(totals = {}) {
+    stats.innerHTML = `<div class="history-stat"><strong>${Number(totals.donations || 0)}</strong><span>Donations posted</span></div><div class="history-stat"><strong>${Number(totals.sevaAccepted || 0)}</strong><span>Seva accepted</span></div><div class="history-stat"><strong>${Number(totals.sevaCompleted || 0)}</strong><span>Seva completed</span></div>`;
+  }
+  function renderTab() {
+    tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.historyTab === activeTab));
+    if (!historyData) return;
+    const items = historyData[activeTab] || [];
+    if (!items.length) {
+      content.className = 'history-empty';
+      content.textContent = activeTab === 'donated' ? 'You have not posted a donation yet.' : 'You have not accepted a seva yet.';
+      return;
+    }
+    content.className = 'history-list';
+    content.innerHTML = items.map(item => `<article class="history-item"><div class="history-item-top"><div><h3>${escapeHTML(item.title || 'AnnaSetu activity')}</h3><p>${escapeHTML(item.category || 'Community help')} · ${escapeHTML(item.quantity || 'Quantity not specified')}</p><p>${escapeHTML([item.area, item.city, item.state || 'Maharashtra'].filter(Boolean).join(', ') || 'Location not specified')} · ${niceDate(item.createdAt)}</p>${activeTab === 'served' && item.donorName ? `<p>Donor: ${escapeHTML(item.donorName)}</p>` : ''}</div><div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end"><span class="history-badge">${escapeHTML(niceStatus(item.status))}</span>${activeTab === 'donated' && String(item.status).toUpperCase() === 'LIVE' ? `<button type="button" class="history-tab" data-stop-donation="${escapeHTML(item.id)}" style="color:#a32620;border-color:#e7b6b2">Stop LIVE</button>` : ''}</div></div></article>`).join('');
+    content.querySelectorAll('[data-stop-donation]').forEach(button => button.addEventListener('click', async () => {
+      if (!confirm('Stop this donation? It will no longer appear in LIVE Seva.')) return;
+      button.disabled = true; button.textContent = 'Stopping…';
+      try {
+        const response = await fetch(`${API_BASE}/api/donations/${encodeURIComponent(button.dataset.stopDonation)}/stop`, { method: 'POST', credentials: 'include' });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.message || 'Could not stop this donation.');
+        await loadHistory();
+      } catch (error) { alert(error.message || 'Could not stop this donation.'); button.disabled = false; button.textContent = 'Stop LIVE'; }
+    }));
+  }
+  async function loadHistory() {
+    content.className = 'history-loading'; content.textContent = 'Loading your history…';
+    try {
+      const response = await fetch(`${API_BASE}/api/auth/history`, {credentials:'include'});
+      const data = await response.json().catch(() => ({}));
+      if (response.status === 401) { location.href = 'login.html?next=' + encodeURIComponent(location.pathname.split('/').pop() || 'index.html'); return; }
+      if (!response.ok) throw new Error(data.message || 'Could not load history.');
+      historyData = data; renderStats(data.totals); renderTab();
+    } catch (error) { content.className = 'history-error'; content.textContent = error.message || 'Could not load history. Please try again.'; }
+  }
+  document.getElementById('openHistory').addEventListener('click', () => { overlay.classList.add('open'); document.body.style.overflow='hidden'; loadHistory(); });
+  function close() { overlay.classList.remove('open'); document.body.style.overflow=''; }
+  document.getElementById('closeHistory').addEventListener('click', close);
+  overlay.addEventListener('click', event => { if (event.target === overlay) close(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
+  tabs.forEach(tab => tab.addEventListener('click', () => { activeTab = tab.dataset.historyTab; renderTab(); }));
+})();
+</script>
+
+</body>
+</html>

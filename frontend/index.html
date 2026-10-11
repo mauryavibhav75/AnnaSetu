@@ -1,0 +1,3233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AnnaSetu — Give With Heart. Serve With Purpose.</title>
+
+    <meta
+        name="description"
+        content="AnnaSetu connects people who want to donate useful things with people who want to serve their community."
+    >
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+            --green: #16804f;
+            --green-dark: #0d5b38;
+            --green-deep: #083d27;
+            --green-light: #e8f7ef;
+
+            --orange: #f3a51b;
+            --orange-light: #fff4dc;
+
+            --cream: #fffaf2;
+            --white: #ffffff;
+
+            --dark: #15231c;
+            --text: #59675f;
+            --muted: #849089;
+
+            --border: #e5ebe7;
+
+            --shadow:
+                0 20px 60px rgba(13, 91, 56, 0.10);
+
+            --radius: 20px;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(255, 250, 242, 0.94);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(229, 235, 231, 0.8);
+        }
+
+        .nav-inner {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 23px;
+            font-weight: 800;
+
+            color: var(--green-dark);
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 13px;
+
+            background: var(--green);
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 8px 22px rgba(22, 128, 79, 0.25);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #4d5a53;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .btn {
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 13px 21px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+
+            border: 1px solid var(--green);
+
+            color: var(--green);
+        }
+
+        .btn-outline:hover {
+            background: var(--green-light);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--green-dark);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            padding-top: 76px;
+
+            min-height: 780px;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(243, 165, 27, .13),
+                    transparent 27%
+                ),
+
+                radial-gradient(
+                    circle at 5% 75%,
+                    rgba(22, 128, 79, .10),
+                    transparent 30%
+                ),
+
+                var(--cream);
+        }
+
+        .hero-inner {
+            min-height: 704px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            align-items: center;
+
+            gap: 65px;
+        }
+
+        .hero-content {
+            padding-top: 25px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            background: var(--green-light);
+            color: var(--green-dark);
+
+            padding: 8px 14px;
+
+            border-radius: 50px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-badge i {
+            color: var(--orange);
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(48px, 6vw, 75px);
+
+            line-height: 1.02;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero-description {
+            max-width: 610px;
+
+            color: var(--text);
+
+            font-size: 18px;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* =========================================================
+           HERO ACTIONS
+        ========================================================= */
+
+        .main-actions {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+
+            max-width: 610px;
+        }
+
+        .main-action {
+            border: none;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            transition: .25s;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .main-action:hover {
+            transform: translateY(-4px);
+        }
+
+        .donate-action {
+            background: var(--green);
+            color: white;
+
+            box-shadow:
+                0 15px 35px rgba(22, 128, 79, .22);
+        }
+
+        .serve-action {
+            background: white;
+
+            color: var(--dark);
+
+            border: 1px solid var(--border);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,.04);
+        }
+
+        .action-icon {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+
+            flex-shrink: 0;
+        }
+
+        .donate-action .action-icon {
+            background: rgba(255,255,255,.15);
+        }
+
+        .serve-action .action-icon {
+            background: var(--orange-light);
+            color: #c17a00;
+        }
+
+        .main-action strong {
+            display: block;
+
+            font-size: 17px;
+
+            margin-bottom: 2px;
+        }
+
+        .main-action small {
+            display: block;
+
+            font-size: 12px;
+
+            opacity: .75;
+        }
+
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .hero-visual {
+            height: 580px;
+
+            position: relative;
+        }
+
+        .hero-photo {
+            position: absolute;
+
+            top: 30px;
+            right: 15px;
+
+            width: 410px;
+            height: 500px;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.03),
+                    rgba(0,0,0,.50)
+                ),
+
+                url(
+                    "https://images.unsplash.com/photo-1594708767771-a7502209ff51?auto=format&fit=crop&w=1000&q=85"
+                )
+                center / cover;
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,.18);
+        }
+
+        .photo-overlay {
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            padding: 30px;
+
+            color: white;
+        }
+
+        .photo-overlay small {
+            opacity: .85;
+        }
+
+        .photo-overlay h3 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 29px;
+
+            line-height: 1.15;
+
+            margin-top: 7px;
+        }
+
+        .photo-overlay p {
+            margin-top: 8px;
+
+            font-size: 13px;
+
+            opacity: .8;
+        }
+
+
+        /* =========================================================
+           FLOATING SEVA CARD
+        ========================================================= */
+
+        .floating-card {
+            position: absolute;
+
+            background: white;
+
+            border-radius: 18px;
+
+            box-shadow: var(--shadow);
+
+            padding: 17px;
+
+            z-index: 5;
+        }
+
+        .floating-card.top {
+            top: 55px;
+            left: -10px;
+
+            width: 210px;
+        }
+
+        .floating-card.bottom {
+            right: -10px;
+            bottom: 20px;
+
+            width: 225px;
+        }
+
+        .mini-icon {
+            width: 43px;
+            height: 43px;
+
+            border-radius: 12px;
+
+            background: var(--green-light);
+            color: var(--green);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            margin-bottom: 10px;
+        }
+
+        .floating-card h4 {
+            font-size: 14px;
+
+            margin-bottom: 4px;
+        }
+
+        .floating-card p {
+            color: var(--text);
+
+            font-size: 12px;
+        }
+
+        .distance {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            margin-top: 10px;
+
+            color: var(--green);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           TRUST STRIP
+        ========================================================= */
+
+        .trust-strip {
+            background: var(--green-deep);
+
+            color: white;
+
+            padding: 24px 0;
+        }
+
+        .trust-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4,1fr);
+
+            gap: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .trust-item i {
+            color: #f8ca6a;
+
+            font-size: 24px;
+        }
+
+        .trust-item strong {
+            display: block;
+
+            font-size: 14px;
+        }
+
+        .trust-item span {
+            display: block;
+
+            color: rgba(255,255,255,.58);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           DONATE / SERVE SECTION
+        ========================================================= */
+
+        .choice-section {
+            background: white;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+        .section-label {
+            color: var(--green);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(35px,4vw,52px);
+
+            line-height: 1.1;
+
+            margin-bottom: 16px;
+        }
+
+        .section-description {
+            color: var(--text);
+
+            max-width: 680px;
+
+            margin: auto;
+
+            font-size: 16px;
+        }
+
+
+        /* TWO BIG CARDS */
+
+        .choice-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+        }
+
+        .choice-card {
+            min-height: 420px;
+
+            border-radius: 27px;
+
+            padding: 40px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            color: white;
+
+            box-shadow: var(--shadow);
+        }
+
+        .choice-card::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.72),
+                    rgba(0,0,0,.05)
+                );
+
+            z-index: 1;
+        }
+
+        .choice-donate {
+            background:
+                url(
+                    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=85"
+                )
+                center / cover;
+        }
+
+        .choice-serve {
+            background:
+                url(
+                    "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1000&q=85"
+                )
+                center / cover;
+        }
+
+        .choice-content {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .choice-icon {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,.18);
+
+            backdrop-filter: blur(10px);
+
+            font-size: 23px;
+
+            margin-bottom: 15px;
+        }
+
+        .choice-card h3 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 35px;
+
+            margin-bottom: 8px;
+        }
+
+        .choice-card p {
+            color: rgba(255,255,255,.83);
+
+            font-size: 14px;
+
+            max-width: 470px;
+
+            margin-bottom: 20px;
+        }
+
+        .choice-button {
+            display: inline-flex;
+
+            width: fit-content;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 18px;
+
+            background: white;
+
+            color: var(--green-dark);
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           DONATION TYPES
+        ========================================================= */
+
+        .donation-section {
+            background: var(--cream);
+        }
+
+        .donation-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 18px;
+
+            margin-top: 45px;
+        }
+
+        .donation-type {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            transition: .25s;
+        }
+
+        .donation-type:hover {
+            transform: translateY(-5px);
+
+            box-shadow: var(--shadow);
+        }
+
+        .donation-type-icon {
+            width: 53px;
+            height: 53px;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--green-light);
+
+            color: var(--green);
+
+            font-size: 24px;
+
+            margin-bottom: 17px;
+        }
+
+        .donation-type h3 {
+            font-size: 18px;
+
+            margin-bottom: 6px;
+        }
+
+        .donation-type p {
+            color: var(--text);
+
+            font-size: 13px;
+
+            margin-bottom: 15px;
+        }
+
+        .donation-options {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 6px;
+        }
+
+        .tag {
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            background: #f4f7f5;
+
+            color: #65716a;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           FOOD DONATION FLOW
+        ========================================================= */
+
+        .food-flow-section {
+            background: white;
+        }
+
+        .food-flow {
+            display: grid;
+
+            grid-template-columns: .9fr 1.1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .food-image {
+            min-height: 550px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.05),
+                    rgba(0,0,0,.30)
+                ),
+
+                url(
+                    "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
+                )
+                center / cover;
+
+            box-shadow: var(--shadow);
+        }
+
+        .food-content h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 45px;
+
+            line-height: 1.1;
+
+            margin-bottom: 15px;
+        }
+
+        .food-content > p {
+            color: var(--text);
+
+            margin-bottom: 25px;
+        }
+
+        .food-steps {
+            display: grid;
+
+            gap: 13px;
+        }
+
+        .food-step {
+            display: flex;
+
+            gap: 13px;
+
+            align-items: flex-start;
+
+            padding: 14px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+        }
+
+        .food-step-number {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 9px;
+
+            flex-shrink: 0;
+
+            background: var(--green-light);
+
+            color: var(--green);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+        .food-step strong {
+            display: block;
+
+            font-size: 14px;
+        }
+
+        .food-step span {
+            display: block;
+
+            color: var(--text);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           OCCASIONS
+        ========================================================= */
+
+        .occasion-section {
+            background: var(--cream);
+        }
+
+        .occasion-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4,1fr);
+
+            gap: 14px;
+
+            margin-top: 40px;
+        }
+
+        .occasion {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            transition: .2s;
+        }
+
+        .occasion:hover {
+            border-color: var(--green);
+
+            transform: translateY(-3px);
+        }
+
+        .occasion i {
+            color: var(--green);
+
+            font-size: 20px;
+        }
+
+        .occasion span {
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           HOW SEVA WORKS
+        ========================================================= */
+
+        .seva-section {
+            background: var(--green-dark);
+
+            color: white;
+        }
+
+        .seva-section .section-label {
+            color: #f8c966;
+        }
+
+        .seva-section .section-description {
+            color: rgba(255,255,255,.67);
+        }
+
+        .seva-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4,1fr);
+
+            gap: 16px;
+
+            margin-top: 50px;
+        }
+
+        .seva-step {
+            padding: 27px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,.06);
+
+            border: 1px solid rgba(255,255,255,.10);
+        }
+
+        .seva-step-icon {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 14px;
+
+            background: rgba(255,255,255,.09);
+
+            color: #f8c966;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+
+            margin-bottom: 20px;
+        }
+
+        .seva-step h3 {
+            font-size: 17px;
+
+            margin-bottom: 7px;
+        }
+
+        .seva-step p {
+            color: rgba(255,255,255,.62);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           IMPACT
+        ========================================================= */
+
+        .impact-section {
+            background: white;
+        }
+
+        .impact-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4,1fr);
+
+            gap: 16px;
+
+            margin-top: 50px;
+        }
+
+        .impact-card {
+            padding: 28px;
+
+            border-radius: 18px;
+
+            background: var(--cream);
+
+            border: 1px solid var(--border);
+        }
+
+        .impact-card i {
+            color: var(--green);
+
+            font-size: 23px;
+        }
+
+        .impact-number {
+            font-size: 36px;
+
+            font-weight: 800;
+
+            margin-top: 10px;
+        }
+
+        .impact-card span {
+            color: var(--text);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           FINAL CTA
+        ========================================================= */
+
+        .cta-section {
+            padding: 100px 0;
+
+            background: var(--cream);
+        }
+
+        .cta-box {
+            min-height: 360px;
+
+            border-radius: 30px;
+
+            padding: 60px;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 40px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #0d5b38,
+                    #1d8b5b
+                );
+        }
+
+        .cta-box::after {
+            content: "♥";
+
+            position: absolute;
+
+            right: 30px;
+            bottom: -80px;
+
+            font-size: 240px;
+
+            opacity: .05;
+        }
+
+        .cta-box h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 45px;
+
+            line-height: 1.1;
+
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: rgba(255,255,255,.7);
+
+            max-width: 600px;
+        }
+
+        .cta-actions {
+            display: flex;
+
+            gap: 10px;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #0c2016;
+
+            color: white;
+
+            padding: 65px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+            gap: 45px;
+
+            padding-bottom: 50px;
+
+            border-bottom: 1px solid rgba(255,255,255,.09);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,.55);
+
+            max-width: 320px;
+
+            font-size: 13px;
+
+            margin-top: 15px;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+
+            margin-bottom: 17px;
+        }
+
+        .footer-column a {
+            display: block;
+
+            color: rgba(255,255,255,.52);
+
+            font-size: 13px;
+
+            margin: 10px 0;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 20px;
+        }
+
+        .social a {
+            width: 36px;
+            height: 36px;
+
+            border-radius: 9px;
+
+            border: 1px solid rgba(255,255,255,.13);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-bottom {
+            padding-top: 22px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: rgba(255,255,255,.38);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media(max-width:1000px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                max-width: 620px;
+                width: 100%;
+
+                margin: auto;
+            }
+
+            .trust-grid,
+            .seva-grid,
+            .impact-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .donation-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .occasion-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .food-flow {
+                grid-template-columns: 1fr;
+            }
+
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+/* AnnaSetu Founder & Vision Section */
+
+.founder-vision {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f0fdf4, #ffffff, #ecfeff);
+    text-align: center;
+}
+
+.founder-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.vision-label {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #15803d;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.founder-container > h2 {
+    margin-bottom: 15px;
+    color: #163b2a;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+}
+
+.founder-container > h3 {
+    margin-bottom: 25px;
+    color: #16804a;
+    font-size: clamp(19px, 2.5vw, 25px);
+}
+
+.founder-container > p {
+    margin: 0 auto 18px;
+    color: #4b5563;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.founder-container blockquote {
+    margin: 35px 0;
+    padding: 20px;
+    border-left: 4px solid #22a06b;
+    background: rgba(255, 255, 255, 0.75);
+    color: #166534;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.founder-details {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #d1e7d8;
+}
+
+.founder-details > span {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.founder-details h3 {
+    margin: 12px 0 6px;
+    color: #163b2a;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.founder-details p {
+    margin: 0;
+    color: #15803d;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .founder-vision {
+        padding: 55px 18px;
+    }
+
+    .founder-container blockquote {
+        font-size: 17px;
+    }
+
+    .founder-details h3 {
+        font-size: 23px;
+    }
+}
+
+        @media(max-width:650px) {
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .nav-actions .btn-outline {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-inner {
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .main-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                height: 440px;
+            }
+
+            .hero-photo {
+                width: 78%;
+                height: 370px;
+
+                right: 5%;
+            }
+
+            .floating-card.top {
+                left: 0;
+                top: 35px;
+            }
+
+            .floating-card.bottom {
+                right: 0;
+                bottom: 10px;
+            }
+
+            .trust-grid,
+            .donation-grid,
+            .seva-grid,
+            .impact-grid,
+            .occasion-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .choice-card {
+                min-height: 390px;
+
+                padding: 28px;
+            }
+
+            .food-image {
+                min-height: 390px;
+            }
+
+            .food-content h2 {
+                font-size: 37px;
+            }
+
+            .cta-box {
+                padding: 40px 27px;
+
+                display: block;
+            }
+
+            .cta-box h2 {
+                font-size: 37px;
+            }
+
+            .cta-actions {
+                margin-top: 25px;
+
+                flex-wrap: wrap;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                display: block;
+            }
+
+            .footer-bottom span {
+                display: block;
+
+                margin-top: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+
+            <div class="logo-icon">
+                <i class="bi bi-heart-fill"></i>
+            </div>
+
+            AnnaSetu
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="#home">Home</a>
+
+            <a href="#donate">Donate</a>
+
+            <a href="#serve">Serve</a>
+
+            <a href="#how-it-works">How It Works</a>
+
+            <a href="#impact">Impact</a>
+
+            <a href="#about">About</a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a href="register.html?next=index.html" class="btn btn-outline">
+                Create Account
+            </a>
+
+            <a href="login.html?next=index.html" class="btn btn-outline">
+                Login
+            </a>
+
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-inner">
+
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <i class="bi bi-heart-fill"></i>
+
+                Safe. Local. Meaningful.
+
+            </div>
+
+
+            <h1>
+
+                Give With Heart.
+                <span>Serve With Purpose.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Have extra food, clothes, ration or useful things?
+
+                Donate them.
+
+                Want to help someone directly?
+
+                Join a Seva.
+
+                AnnaSetu connects both sides of humanity.
+
+            </p>
+
+
+            <!-- TWO MAIN ACTIONS -->
+
+            <div class="main-actions">
+
+
+                <a href="login.html?next=donate.html" class="main-action donate-action">
+
+                    <div class="action-icon">
+
+                        <i class="bi bi-box2-heart-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Donate
+                        </strong>
+
+                        <small>
+                            I have something useful to give
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a href="login.html?next=find-seva.html" class="main-action serve-action">
+
+                    <div class="action-icon">
+
+                        <i class="bi bi-people-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Serve
+                        </strong>
+
+                        <small>
+                            I want to do Seva and help
+                        </small>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <p
+                style="
+                    margin-top:18px;
+                    font-size:12px;
+                    color:#738078;
+                "
+            >
+
+                <i class="bi bi-shield-check"></i>
+
+                Your location and personal details are protected.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- HERO IMAGE -->
+
+        <div class="hero-visual">
+
+
+            <div class="floating-card top">
+
+                <div class="mini-icon">
+
+                    <i class="bi bi-heart-fill"></i>
+
+                </div>
+
+                <h4>
+                    Someone needs help
+                </h4>
+
+                <p>
+                    40 fresh meals are available nearby.
+                </p>
+
+                <div class="distance">
+
+                    <i class="bi bi-geo-alt-fill"></i>
+
+                    2.4 km away
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-photo">
+
+                <div class="photo-overlay">
+
+                    <small>
+                        Together, we can make a difference.
+                    </small>
+
+                    <h3>
+                        A Meal Given With Love Is Seva.
+                    </h3>
+
+                    <p>
+                        Give what you can. Serve where you can.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-card bottom">
+
+                <div class="mini-icon">
+
+                    <i class="bi bi-car-front-fill"></i>
+
+                </div>
+
+                <h4>
+                    Seva Volunteer
+                </h4>
+
+                <p>
+                    Pick up the donation and help distribute it.
+                </p>
+
+                <div class="distance">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Ready to serve
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TRUST
+========================================================= -->
+
+<section class="trust-strip">
+
+    <div class="container trust-grid">
+
+
+        <div class="trust-item">
+
+            <i class="bi bi-box2-heart-fill"></i>
+
+            <div>
+
+                <strong>
+                    Donate What You Can
+                </strong>
+
+                <span>
+                    Food, ration, clothes & essentials
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <i class="bi bi-people-fill"></i>
+
+            <div>
+
+                <strong>
+                    Serve Your Community
+                </strong>
+
+                <span>
+                    Volunteer around you
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <i class="bi bi-geo-alt-fill"></i>
+
+            <div>
+
+                <strong>
+                    Find Nearby Seva
+                </strong>
+
+                <span>
+                    Discover opportunities nearby
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <i class="bi bi-heart-fill"></i>
+
+            <div>
+
+                <strong>
+                    Create Real Impact
+                </strong>
+
+                <span>
+                    Every contribution matters
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DONATE / SERVE
+========================================================= -->
+
+<section class="section choice-section" id="donate">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Your Choice
+            </div>
+
+            <h2 class="section-title">
+                There are two ways<br>
+                to become part of AnnaSetu.
+            </h2>
+
+            <p class="section-description">
+
+                You can give something useful.
+
+                Or you can give your time, vehicle and effort.
+
+                Both are Seva.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="choice-grid">
+
+
+            <!-- DONATE -->
+
+            <div class="choice-card choice-donate">
+
+                <div class="choice-content">
+
+                    <div class="choice-icon">
+
+                        <i class="bi bi-box2-heart-fill"></i>
+
+                    </div>
+
+                    <h3>
+                        Donate
+                    </h3>
+
+                    <p>
+
+                        Have extra food after a wedding, pooja,
+                        festival, birthday or event?
+
+                        Have clothes, ration, blankets or other useful items?
+
+                        Post them on AnnaSetu.
+
+                    </p>
+
+                    <a href="login.html?next=donate.html" class="choice-button">
+
+                        Start Donating
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SERVE -->
+
+            <div
+                class="choice-card choice-serve"
+                id="serve"
+            >
+
+                <div class="choice-content">
+
+                    <div class="choice-icon">
+
+                        <i class="bi bi-people-fill"></i>
+
+                    </div>
+
+                    <h3>
+                        Serve
+                    </h3>
+
+                    <p>
+
+                        Want to help someone directly?
+
+                        Find nearby donation opportunities,
+                        contact the donor, travel to the location,
+                        collect the donation and help distribute it.
+
+                    </p>
+
+                    <a href="login.html?next=find-seva.html" class="choice-button">
+
+                        Start Seva
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DONATION TYPES
+========================================================= -->
+
+<section class="section donation-section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Donate Something Useful
+            </div>
+
+            <h2 class="section-title">
+                What would you like to give?
+            </h2>
+
+            <p class="section-description">
+
+                One meal, one blanket, one bag of ration or one
+                pair of clothes can become someone's reason to smile.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="donation-grid">
+
+
+            <!-- FOOD -->
+
+            <div class="donation-type">
+
+                <div class="donation-type-icon">
+
+                    <i class="bi bi-egg-fried"></i>
+
+                </div>
+
+                <h3>
+                    Food
+                </h3>
+
+                <p>
+                    Safe cooked or packaged food that can serve people.
+                </p>
+
+                <div class="donation-options">
+
+                    <span class="tag">Wedding Food</span>
+                    <span class="tag">Pooja</span>
+                    <span class="tag">Festival</span>
+                    <span class="tag">Bhandara</span>
+                    <span class="tag">Birthday</span>
+                    <span class="tag">Home Food</span>
+                    <span class="tag">Restaurant</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RATION -->
+
+            <div class="donation-type">
+
+                <div class="donation-type-icon">
+
+                    <i class="bi bi-bag-heart-fill"></i>
+
+                </div>
+
+                <h3>
+                    Ration
+                </h3>
+
+                <p>
+                    Everyday groceries and food supplies.
+                </p>
+
+                <div class="donation-options">
+
+                    <span class="tag">Rice</span>
+                    <span class="tag">Wheat</span>
+                    <span class="tag">Flour</span>
+                    <span class="tag">Pulses</span>
+                    <span class="tag">Oil</span>
+                    <span class="tag">Sugar</span>
+                    <span class="tag">Salt</span>
+                    <span class="tag">Groceries</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CLOTHES -->
+
+            <div class="donation-type">
+
+                <div class="donation-type-icon">
+
+                    <i class="bi bi-person-hearts"></i>
+
+                </div>
+
+                <h3>
+                    Clothes
+                </h3>
+
+                <p>
+                    Clean and usable clothes for people in need.
+                </p>
+
+                <div class="donation-options">
+
+                    <span class="tag">Men</span>
+                    <span class="tag">Women</span>
+                    <span class="tag">Children</span>
+                    <span class="tag">Shoes</span>
+                    <span class="tag">Blankets</span>
+                    <span class="tag">Winter Wear</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ESSENTIALS -->
+
+            <div class="donation-type">
+
+                <div class="donation-type-icon">
+
+                    <i class="bi bi-box-seam-fill"></i>
+
+                </div>
+
+                <h3>
+                    Other Essentials
+                </h3>
+
+                <p>
+                    Useful things that can help another person.
+                </p>
+
+                <div class="donation-options">
+
+                    <span class="tag">Books</span>
+                    <span class="tag">School Items</span>
+                    <span class="tag">Hygiene</span>
+                    <span class="tag">Household</span>
+                    <span class="tag">Useful Items</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOD DONATION FLOW
+========================================================= -->
+
+<section class="section food-flow-section">
+
+    <div class="container food-flow">
+
+
+        <div class="food-image"></div>
+
+
+        <div class="food-content">
+
+            <div class="section-label">
+                Food Seva
+            </div>
+
+            <h2>
+                Have extra food?<br>
+                Don't let it go to waste.
+            </h2>
+
+            <p>
+
+                Whether it is food left after a wedding,
+                ghar ki pooja, birthday, festival, community event
+                or restaurant service, you can quickly post it
+                on AnnaSetu.
+
+            </p>
+
+
+            <div class="food-steps">
+
+
+                <div class="food-step">
+
+                    <div class="food-step-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Take a Picture
+                        </strong>
+
+                        <span>
+                            Click a photo of the food you want to donate.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-step">
+
+                    <div class="food-step-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Tell Us How Much
+                        </strong>
+
+                        <span>
+                            Example: Food available for approximately 40 people.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-step">
+
+                    <div class="food-step-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Select the Occasion
+                        </strong>
+
+                        <span>
+                            Wedding, Pooja, Eid, Christmas, Festival, Birthday,
+                            Bhandara or any other occasion.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-step">
+
+                    <div class="food-step-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Add Location & Contact
+                        </strong>
+
+                        <span>
+                            Add your pickup location and contact details.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-step">
+
+                    <div class="food-step-number">
+                        05
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Post Your Seva
+                        </strong>
+
+                        <span>
+                            Nearby Seva Volunteers can see the opportunity
+                            and contact you.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <a href="login.html?next=donate.html" class="btn btn-primary" style="margin-top:25px;">
+
+                <i class="bi bi-camera-fill"></i>
+
+                Post Food Donation
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     OCCASIONS
+========================================================= -->
+
+<section class="section occasion-section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Every Occasion Can Become Seva
+            </div>
+
+            <h2 class="section-title">
+                Celebrate by sharing.
+            </h2>
+
+            <p class="section-description">
+
+                Whatever your occasion, if there is something useful
+                left over, someone may be waiting for it.
+
+            </p>
+
+        </div>
+
+
+        <div class="occasion-grid">
+
+
+            <div class="occasion">
+
+                <i class="bi bi-heart-fill"></i>
+
+                <span>
+                    Wedding
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-cake2-fill"></i>
+
+                <span>
+                    Birthday
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-house-heart-fill"></i>
+
+                <span>
+                    Ghar Ki Pooja
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-stars"></i>
+
+                <span>
+                    Festival
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-moon-stars-fill"></i>
+
+                <span>
+                    Eid / Ramadan
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-flower1"></i>
+
+                <span>
+                    Temple / Bhandara
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-gift-fill"></i>
+
+                <span>
+                    Community Event
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-shop"></i>
+
+                <span>
+                    Restaurant Surplus
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-house-heart"></i>
+
+                <span>
+                    Home-Cooked Food
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-tree-fill"></i>
+
+                <span>
+                    Christmas
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-people-fill"></i>
+
+                <span>
+                    Community Meal
+                </span>
+
+            </div>
+
+
+            <div class="occasion">
+
+                <i class="bi bi-three-dots"></i>
+
+                <span>
+                    Other Occasion
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HOW SEVA WORKS
+========================================================= -->
+
+<section class="section seva-section" id="serve">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Become A Seva Volunteer
+            </div>
+
+            <h2 class="section-title">
+                You don't need money<br>
+                to make a difference.
+            </h2>
+
+            <p class="section-description">
+
+                Give your time, your vehicle, your effort and your heart.
+                Find a nearby donation and help it reach someone who needs it.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="seva-grid">
+
+
+            <div class="seva-step">
+
+                <div class="seva-step-icon">
+
+                    <i class="bi bi-geo-alt-fill"></i>
+
+                </div>
+
+                <h3>
+                    Find Nearby Seva
+                </h3>
+
+                <p>
+                    See available donations around your location.
+                </p>
+
+            </div>
+
+
+            <div class="seva-step">
+
+                <div class="seva-step-icon">
+
+                    <i class="bi bi-person-lines-fill"></i>
+
+                </div>
+
+                <h3>
+                    Contact Donor
+                </h3>
+
+                <p>
+                    View appropriate contact information after accepting.
+                </p>
+
+            </div>
+
+
+            <div class="seva-step">
+
+                <div class="seva-step-icon">
+
+                    <i class="bi bi-car-front-fill"></i>
+
+                </div>
+
+                <h3>
+                    Go & Collect
+                </h3>
+
+                <p>
+                    Travel to the pickup location and collect the donation.
+                </p>
+
+            </div>
+
+
+            <div class="seva-step">
+
+                <div class="seva-step-icon">
+
+                    <i class="bi bi-heart-fill"></i>
+
+                </div>
+
+                <h3>
+                    Serve & Complete
+                </h3>
+
+                <p>
+                    Help distribute the donation and record the impact.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div style="text-align:center;margin-top:45px;">
+
+            <a href="login.html?next=find-seva.html" class="btn btn-white">
+
+                <i class="bi bi-people-fill"></i>
+
+                Become A Seva Volunteer
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     IMPACT
+========================================================= -->
+
+<section class="section impact-section" id="impact">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Our Collective Impact
+            </div>
+
+            <h2 class="section-title">
+                Every act of Seva counts.
+            </h2>
+
+            <p class="section-description">
+
+                Every donation and every volunteer journey can create
+                a small but meaningful change.
+
+            </p>
+
+        </div>
+
+
+        <div class="impact-grid">
+
+
+            <div class="impact-card">
+
+                <i class="bi bi-egg-fried"></i>
+
+                <div
+                    class="impact-number"
+                    data-target="12450"
+                >
+                    0
+                </div>
+
+                <span>
+                    Meals Served
+                </span>
+
+            </div>
+
+
+            <div class="impact-card">
+
+                <i class="bi bi-heart-fill"></i>
+
+                <div
+                    class="impact-number"
+                    data-target="8200"
+                >
+                    0
+                </div>
+
+                <span>
+                    People Helped
+                </span>
+
+            </div>
+
+
+            <div class="impact-card">
+
+                <i class="bi bi-box2-heart-fill"></i>
+
+                <div
+                    class="impact-number"
+                    data-target="3150"
+                >
+                    0
+                </div>
+
+                <span>
+                    Donations Completed
+                </span>
+
+            </div>
+
+
+            <div class="impact-card">
+
+                <i class="bi bi-people-fill"></i>
+
+                <div
+                    class="impact-number"
+                    data-target="1240"
+                >
+                    0
+                </div>
+
+                <span>
+                    Seva Volunteers
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="cta-section" id="about">
+
+    <div class="container">
+
+
+        <div class="cta-box">
+
+
+            <div>
+
+                <h2>
+                    Give what you can.<br>
+                    Serve where you can.
+                </h2>
+
+                <p>
+
+                    A meal can feed someone.
+
+                    A blanket can keep someone warm.
+
+                    A volunteer can connect both.
+
+                    That's AnnaSetu.
+
+                </p>
+
+            </div>
+
+
+            <div class="cta-actions">
+
+                <a href="login.html?next=donate.html" class="btn btn-white">
+
+                    <i class="bi bi-box2-heart-fill"></i>
+
+                    Donate
+
+                </a>
+
+
+                <a
+                    href="login.html?next=find-seva.html"
+                    class="btn"
+                    style="
+                        color:white;
+                        border:1px solid rgba(255,255,255,.45);
+                    "
+                >
+
+                    <i class="bi bi-people-fill"></i>
+
+                    Serve
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Founder & Vision Section -->
+<section class="founder-vision" id="our-vision">
+    <div class="founder-container">
+
+        <span class="vision-label">THE HEART BEHIND ANNASETU</span>
+
+        <h2>The Vision Behind AnnaSetu</h2>
+
+        <h3>A Small Hope Can Make a Big Difference.</h3>
+
+        <p>
+            AnnaSetu was created with a simple vision: to connect
+            people who have something to give with those who need
+            it most. Whether it is food, clothing, books, or other
+            essential items, every contribution can bring hope
+            into someone's life.
+        </p>
+
+        <p>
+            My ambition is to build a community where people help
+            one another, resources are not wasted, and kindness
+            reaches those who need it. I believe that even the
+            smallest act of generosity can make a meaningful
+            difference in someone's life.
+        </p>
+
+        <blockquote>
+            "Helping someone today can give them hope for tomorrow."
+        </blockquote>
+
+        <div class="founder-details">
+            <span>Developed with Purpose & Compassion by</span>
+
+            <h3>Vibhav Kumar Maurya</h3>
+
+            <p>Founder & Developer — AnnaSetu</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="#home"
+                    class="logo"
+                    style="color:white;"
+                >
+
+                    <div class="logo-icon">
+
+                        <i class="bi bi-heart-fill"></i>
+
+                    </div>
+
+                    AnnaSetu
+
+                </a>
+
+
+                <p>
+
+                    Connecting people who want to give
+                    with people who want to serve.
+
+                    Together, we can make sure nothing useful
+                    goes to waste.
+
+                </p>
+
+
+                <div class="social">
+
+                    <a href="#">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    AnnaSetu
+                </h4>
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#donate">
+                    Donate
+                </a>
+
+                <a href="#serve">
+                    Serve
+                </a>
+
+                <a href="#impact">
+                    Impact
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Get Involved
+                </h4>
+
+                <a href="login.html?next=donate.html">
+                    Donate Food
+                </a>
+
+                <a href="login.html?next=donate.html">
+                    Donate Ration
+                </a>
+
+                <a href="login.html?next=donate.html">
+                    Donate Clothes
+                </a>
+
+                <a href="login.html?next=find-seva.html">
+                    Become A Volunteer
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Support
+                </h4>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="help.html">
+                    Help & Support
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 AnnaSetu. All rights reserved.
+            </span>
+
+            <span>
+                Every Meal Deserves a Purpose. ❤️
+            </span>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    /* =========================================================
+       IMPACT COUNTERS
+    ========================================================= */
+
+    const counters =
+        document.querySelectorAll(".impact-number");
+
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+
+                    const counter = entry.target;
+
+                    const target =
+                        Number(counter.dataset.target);
+
+
+                    let current = 0;
+
+                    const increment =
+                        target / 80;
+
+
+                    function updateCounter() {
+
+                        current += increment;
+
+
+                        if (current < target) {
+
+                            counter.textContent =
+                                Math.floor(current)
+                                .toLocaleString();
+
+                            requestAnimationFrame(
+                                updateCounter
+                            );
+
+                        } else {
+
+                            counter.textContent =
+                                target.toLocaleString();
+
+                        }
+
+                    }
+
+
+                    updateCounter();
+
+                    observer.unobserve(counter);
+
+                });
+
+            },
+
+            {
+                threshold: .5
+            }
+
+        );
+
+
+    counters.forEach(counter => {
+
+        observer.observe(counter);
+
+    });
+
+
+
+    /* =========================================================
+       SMOOTH SCROLL
+    ========================================================= */
+
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                function(event) {
+
+                    const id =
+                        this.getAttribute("href");
+
+                    if (id === "#") {
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(id);
+
+
+                    if (target) {
+
+                        event.preventDefault();
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                }
+            );
+
+        });
+
+</script>
+
+
+</body>
+</html>
