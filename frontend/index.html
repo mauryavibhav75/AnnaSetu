@@ -183,6 +183,34 @@
             gap: 10px;
         }
 
+        /* Mobile/tablet navigation toggle (hidden on desktop) */
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 13px;
+            border: 1px solid rgba(22, 128, 79, .28);
+            border-radius: 11px;
+            background: var(--white);
+            color: var(--green-dark);
+            font-size: 14px;
+            font-weight: 800;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .nav-toggle i {
+            font-size: 20px;
+        }
+
+        .nav-toggle:focus-visible,
+        .nav-links a:focus-visible,
+        .nav-actions a:focus-visible {
+            outline: 3px solid rgba(243, 165, 27, .8);
+            outline-offset: 3px;
+        }
+
 
         /* =========================================================
            BUTTONS
@@ -1357,8 +1385,57 @@
 
         @media(max-width:1000px) {
 
-            .nav-links {
+            .nav-inner {
+                flex-wrap: wrap;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                margin-left: auto;
+            }
+
+            /* Keep the links collapsed until the Menu button is tapped. */
+            .nav-links,
+            .nav-actions {
                 display: none;
+                flex: 0 0 100%;
+                width: 100%;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 0;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 11px 8px;
+                border-radius: 8px;
+            }
+
+            .nav-links a:hover {
+                background: var(--green-light);
+            }
+
+            .nav-actions {
+                align-items: stretch;
+                gap: 10px;
+                padding: 4px 0 10px;
+            }
+
+            .nav-actions .btn-outline {
+                display: inline-flex;
+                flex: 1 1 0;
+            }
+
+            .navbar.menu-open .nav-links,
+            .navbar.menu-open .nav-actions {
+                display: flex;
             }
 
             .hero-inner {
@@ -1399,97 +1476,6 @@
             }
         }
 
-/* AnnaSetu Founder & Vision Section */
-
-.founder-vision {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #f0fdf4, #ffffff, #ecfeff);
-    text-align: center;
-}
-
-.founder-container {
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-.vision-label {
-    display: inline-block;
-    margin-bottom: 16px;
-    color: #15803d;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.founder-container > h2 {
-    margin-bottom: 15px;
-    color: #163b2a;
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 800;
-}
-
-.founder-container > h3 {
-    margin-bottom: 25px;
-    color: #16804a;
-    font-size: clamp(19px, 2.5vw, 25px);
-}
-
-.founder-container > p {
-    margin: 0 auto 18px;
-    color: #4b5563;
-    font-size: 16px;
-    line-height: 1.9;
-}
-
-.founder-container blockquote {
-    margin: 35px 0;
-    padding: 20px;
-    border-left: 4px solid #22a06b;
-    background: rgba(255, 255, 255, 0.75);
-    color: #166534;
-    font-size: 19px;
-    font-style: italic;
-    line-height: 1.7;
-}
-
-.founder-details {
-    margin-top: 35px;
-    padding-top: 25px;
-    border-top: 1px solid #d1e7d8;
-}
-
-.founder-details > span {
-    color: #6b7280;
-    font-size: 14px;
-}
-
-.founder-details h3 {
-    margin: 12px 0 6px;
-    color: #163b2a;
-    font-size: 27px;
-    font-weight: 800;
-}
-
-.founder-details p {
-    margin: 0;
-    color: #15803d;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-@media (max-width: 600px) {
-    .founder-vision {
-        padding: 55px 18px;
-    }
-
-    .founder-container blockquote {
-        font-size: 17px;
-    }
-
-    .founder-details h3 {
-        font-size: 23px;
-    }
-}
 
         @media(max-width:650px) {
 
@@ -1498,7 +1484,18 @@
             }
 
             .nav-actions .btn-outline {
-                display: none;
+                display: inline-flex;
+                flex: 1 1 0;
+                padding: 11px 12px;
+                font-size: 13px;
+            }
+
+            .nav-toggle {
+                padding: 10px 12px;
+            }
+
+            .nav-inner {
+                min-height: 68px;
             }
 
             .hero {
@@ -1621,7 +1618,19 @@
         </a>
 
 
-        <nav class="nav-links">
+        <button
+            class="nav-toggle"
+            id="navToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mainNavigation mobileNavActions"
+            aria-label="Open navigation menu"
+        >
+            <i class="bi bi-list" aria-hidden="true"></i>
+            <span>Menu</span>
+        </button>
+
+        <nav class="nav-links" id="mainNavigation">
 
             <a href="#home">Home</a>
 
@@ -1638,7 +1647,7 @@
         </nav>
 
 
-        <div class="nav-actions">
+        <div class="nav-actions" id="mobileNavActions">
 
             <a href="register.html?next=index.html" class="btn btn-outline">
                 Create Account
@@ -1705,7 +1714,7 @@
             <div class="main-actions">
 
 
-                <a href="login.html?next=donate.html" class="main-action donate-action">
+                <a href="register.html?next=donate.html" class="main-action donate-action">
 
                     <div class="action-icon">
 
@@ -1728,7 +1737,7 @@
                 </a>
 
 
-                <a href="login.html?next=find-seva.html" class="main-action serve-action">
+                <a href="register.html?next=find-seva.html" class="main-action serve-action">
 
                     <div class="action-icon">
 
@@ -2014,7 +2023,7 @@
 
                     </p>
 
-                    <a href="login.html?next=donate.html" class="choice-button">
+                    <a href="register.html?next=donate.html" class="choice-button">
 
                         Start Donating
 
@@ -2057,7 +2066,7 @@
 
                     </p>
 
-                    <a href="login.html?next=find-seva.html" class="choice-button">
+                    <a href="register.html?next=find-seva.html" class="choice-button">
 
                         Start Seva
 
@@ -2256,7 +2265,7 @@
      FOOD DONATION FLOW
 ========================================================= -->
 
-<section class="section food-flow-section">
+<section class="section food-flow-section" id="how-it-works">
 
     <div class="container food-flow">
 
@@ -2398,7 +2407,7 @@
             </div>
 
 
-            <a href="login.html?next=donate.html" class="btn btn-primary" style="margin-top:25px;">
+            <a href="register.html?next=donate.html" class="btn btn-primary" style="margin-top:25px;">
 
                 <i class="bi bi-camera-fill"></i>
 
@@ -2701,7 +2710,7 @@
 
         <div style="text-align:center;margin-top:45px;">
 
-            <a href="login.html?next=find-seva.html" class="btn btn-white">
+            <a href="register.html?next=find-seva.html" class="btn btn-white">
 
                 <i class="bi bi-people-fill"></i>
 
@@ -2865,7 +2874,7 @@
 
             <div class="cta-actions">
 
-                <a href="login.html?next=donate.html" class="btn btn-white">
+                <a href="register.html?next=donate.html" class="btn btn-white">
 
                     <i class="bi bi-box2-heart-fill"></i>
 
@@ -2875,7 +2884,7 @@
 
 
                 <a
-                    href="login.html?next=find-seva.html"
+                    href="register.html?next=find-seva.html"
                     class="btn"
                     style="
                         color:white;
@@ -2898,46 +2907,7 @@
 
 </section>
 
-<!-- Founder & Vision Section -->
-<section class="founder-vision" id="our-vision">
-    <div class="founder-container">
 
-        <span class="vision-label">THE HEART BEHIND ANNASETU</span>
-
-        <h2>The Vision Behind AnnaSetu</h2>
-
-        <h3>A Small Hope Can Make a Big Difference.</h3>
-
-        <p>
-            AnnaSetu was created with a simple vision: to connect
-            people who have something to give with those who need
-            it most. Whether it is food, clothing, books, or other
-            essential items, every contribution can bring hope
-            into someone's life.
-        </p>
-
-        <p>
-            My ambition is to build a community where people help
-            one another, resources are not wasted, and kindness
-            reaches those who need it. I believe that even the
-            smallest act of generosity can make a meaningful
-            difference in someone's life.
-        </p>
-
-        <blockquote>
-            "Helping someone today can give them hope for tomorrow."
-        </blockquote>
-
-        <div class="founder-details">
-            <span>Developed with Purpose & Compassion by</span>
-
-            <h3>Vibhav Kumar Maurya</h3>
-
-            <p>Founder & Developer — AnnaSetu</p>
-        </div>
-
-    </div>
-</section>
 
 <!-- =========================================================
      FOOTER
@@ -3033,19 +3003,19 @@
                     Get Involved
                 </h4>
 
-                <a href="login.html?next=donate.html">
+                <a href="register.html?next=donate.html">
                     Donate Food
                 </a>
 
-                <a href="login.html?next=donate.html">
+                <a href="register.html?next=donate.html">
                     Donate Ration
                 </a>
 
-                <a href="login.html?next=donate.html">
+                <a href="register.html?next=donate.html">
                     Donate Clothes
                 </a>
 
-                <a href="login.html?next=find-seva.html">
+                <a href="register.html?next=find-seva.html">
                     Become A Volunteer
                 </a>
 
@@ -3106,6 +3076,45 @@
 
 <script>
 
+    /* =========================================================
+       RESPONSIVE MOBILE NAVIGATION
+    ========================================================= */
+    (function setupMobileNavigation() {
+        const navbar = document.querySelector(".navbar");
+        const toggle = document.getElementById("navToggle");
+        if (!navbar || !toggle) return;
+
+        const icon = toggle.querySelector("i");
+
+        function setMenuOpen(open) {
+            navbar.classList.toggle("menu-open", open);
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.setAttribute(
+                "aria-label",
+                open ? "Close navigation menu" : "Open navigation menu"
+            );
+            if (icon) {
+                icon.classList.toggle("bi-list", !open);
+                icon.classList.toggle("bi-x-lg", open);
+            }
+        }
+
+        toggle.addEventListener("click", () => {
+            setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
+        });
+
+        navbar.querySelectorAll(".nav-links a, .nav-actions a").forEach(link => {
+            link.addEventListener("click", () => setMenuOpen(false));
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") setMenuOpen(false);
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 1000) setMenuOpen(false);
+        });
+    })();
 
     /* =========================================================
        IMPACT COUNTERS
